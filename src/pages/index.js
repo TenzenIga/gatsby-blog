@@ -16,7 +16,7 @@ const IndexPage = () => (
             key={node.id}
             title={node.frontmatter.title}
             date={node.frontmatter.date} 
-            path={node.frontmatter.path}
+            slug={node.fields.slug}
             content={node.excerpt}
             tags={node.frontmatter.tags}
             image={node.frontmatter.image.childImageSharp.fluid}  />
@@ -47,6 +47,9 @@ query indexQuery {
             }
           }
         }
+        fields{
+          slug
+      }
         excerpt
       }
     }

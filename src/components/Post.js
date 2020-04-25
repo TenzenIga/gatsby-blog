@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image';
 import {slugify} from '../util/util';
 
-export default function Post({title, date, path, image, content, tags}) {
+export default function Post({title, date, slug, image, content, tags}) {
     return (
         <>
             <h4>{title}</h4>
@@ -11,7 +11,7 @@ export default function Post({title, date, path, image, content, tags}) {
             <p>{date}</p>
     {tags.map( tag => <Link to={`/tag/${slugify(tag)}`} >{tag}</Link>) }
            <p>{content}</p>
-            <Link to={path}> Читать...</Link>
+            <Link to={slug}> Читать...</Link>
         </>
     )
 }
