@@ -1,48 +1,28 @@
-import { Link } from "gatsby"
+
 import PropTypes from "prop-types"
 import React from "react"
-import Nav from './Nav';
-import styled, {createGlobalStyle } from "styled-components";
-const StyledLink = styled(Link)`
-  display:inline-block;
-  padding:12px 16px;
-  color: palevioletred;
-  font-weight: bold;
-  text-decoration:none;
-  &.active {
-    color: black;
-    
-  }
-`;
+import {Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from "gatsby";
 
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin:0;
-    font-family:'Merriweather', serif;
-  }
-`
-
-const Container = styled.div`
-  width:960px;
-  margin:auto;    
-`
-
-const Header = ({ siteTitle }) => (
-  <header>
-    <GlobalStyle />
-      <Nav>
-      <Container>
-      <StyledLink to="/" activeClassName="active">
-          {siteTitle}
-        </StyledLink>
-        <StyledLink to="/about" activeClassName="active">
-          Об авторе
-        </StyledLink>
-      </Container>
+const Header = ({ siteTitle }) =>{
+  
+  return (
+    <header >
+<Navbar bg="dark" variant="dark">
+  <Container>
+  <Navbar.Brand href="/" >{siteTitle}</Navbar.Brand>
+    <Nav className="mr-auto">
+      <Link to="/" className='nav-link' activeClassName='active'>Посты</Link>
+      <Link to="/tags"  className='nav-link'  activeClassName='active' >Теги</Link>
+      <Link to="/about" className='nav-link'  activeClassName='active' >Об авторе</Link>
     </Nav>
-  </header>
-)
+  </Container>
+ 
+  </Navbar>
+    </header>
+    );
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

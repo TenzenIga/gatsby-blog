@@ -7,6 +7,8 @@
 // You can delete this file if you're not using it
 const {slugify} = require('./src/util/util');
 const path = require('path');
+const _ = require('lodash');
+
 exports.onCreateNode = ({node, actions}) =>{
     const {createNodeField} = actions
     if(node.internal.type === 'MarkdownRemark'){
@@ -21,8 +23,10 @@ exports.onCreateNode = ({node, actions}) =>{
 
 exports.createPages = ({actions, graphql}) =>{
     const { createPage } = actions;
-    const singlePostTemplate = path.resolve('src/templates/single-post.js')  
-
+    const templates = {
+        singlePost: path.resolve('src/templates/single-post.js'),
+        tagsPage: path.resolve('src/templates/tags-page.js')     
+    }
     return graphql(`
         {
             allMarkdownRemark{
@@ -45,11 +49,38 @@ exports.createPages = ({actions, graphql}) =>{
         posts.forEach(({node}) => {
             createPage({
                 path: node.fields.slug,
-                component: singlePostTemplate,
+                component: templates.singlePost,
                 context:{
                     slug: node.fields.slug
                 }   
             })
         })
+        // get all tags
+        let tags = []
+        _.each(posts, edge =>{
+            if(_.get(edge, 'node.frontmatter.tags')){
+                tags = tags.concat(edge.node.frontmatter.tags)
+            }
+        })
+        // [ design: 5, code: 1]
+        let tagPostsCounts = {}
+            tags.forEach(tag =>{
+                tagPostsCounts[tag] = (tagPostsCounts[tag] || 0) + 1;
+            })
+
+        tags = _.uniq(tags);
+
+        //create Tags page
+        createPage({
+                path: '/tags',
+                component: templates.tagsPage,
+                context:{
+                    tags,
+                    tagPostsCounts
+                }
+            })
+        
     })
 }
+
+

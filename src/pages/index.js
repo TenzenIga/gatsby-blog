@@ -4,14 +4,16 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/Post"
+import {Row, Col} from 'react-bootstrap';
+
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Посты</h1>
+    <h2 className='text-center my-4' >Посты</h2>
     <StaticQuery query={indexQuery} render={data => {
       return(
-        <div>
+        <Row>
           { data.allMarkdownRemark.edges.map(({node})=> (<Post
             key={node.id}
             title={node.frontmatter.title}
@@ -21,10 +23,11 @@ const IndexPage = () => (
             tags={node.frontmatter.tags}
             image={node.frontmatter.image.childImageSharp.fluid}  />
           ))}
-        </div>
+        </Row>
       )
     }}
      /> 
+     
   </Layout>
 )
 
@@ -41,7 +44,7 @@ query indexQuery {
           tags
           image{
             childImageSharp{
-              fluid(maxWidth: 600){
+              fluid(maxWidth: 500){
                 ...GatsbyImageSharpFluid
               }
             }
