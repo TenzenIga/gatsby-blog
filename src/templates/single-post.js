@@ -6,22 +6,36 @@ import Img from 'gatsby-image';
 import {slugify} from '../util/util';
 import {Row, Col, Card, Badge}  from 'react-bootstrap';
 import Sidebar from '../components/Sidebar';
+import { DiscussionEmbed } from 'disqus-react';
 
-export default function singlePost({data}) {
+
+export default function singlePost({data, pageContext}) {
     const post = data.markdownRemark.frontmatter
+    
+    const baseUrl = 'http://localhost:8000/'
+    const disqusShortName = 'mycoolblog';
+    const config ={
+        identifier:data.markdownRemark.id,
+        title: post.title,
+        url: baseUrl + pageContext.slug
+        }
+
     return (
         <Layout>
             <SEO title = {post.title} />
-            <h2 className='text-center my-4' >{post.title}</h2>
+            <h2 className='my-4' >{post.title}</h2>
             <Row>
                 <Col md='8'>
                 <Card>
                 <Img fluid = {post.image.childImageSharp.fluid} />
                     <Card.Body>
-                        <Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted" >
                             {post.date}
                         </Card.Subtitle>
+                        <Card.Text>
                         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />
+                        </Card.Text>
+                        
                         <div>
                 {post.tags.map(tag =>(
                   <Link key={tag} to={`/tag/${slugify(tag)}`} className='mr-1' >
@@ -36,7 +50,7 @@ export default function singlePost({data}) {
                     <Sidebar />
                 </Col>
             </Row> 
-         
+        <DiscussionEmbed shortname={disqusShortName} config={config} />
         </Layout>
     )
 }

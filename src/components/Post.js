@@ -15,13 +15,13 @@ export default function Post({title, date, slug, image, content, tags}) {
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
     <Card.Text>{content}</Card.Text>
-    <div className='d-flex'>
+    <div className='d-flex align-items-center'>
     {tags.map( tag =>
         <Link key={tag} to={`/tag/${slugify(tag)}`} className='mr-1' >
              <Badge variant="primary" > {tag}</Badge>
         </Link>
         )}
-    <Button href={slug} className='ml-auto text-decoration-none' variant="link"  >Читать »</Button>
+    <Button href={`/${slug}`} className='ml-auto text-decoration-none' variant="link"  >Читать »</Button>
     </div>
    
 
