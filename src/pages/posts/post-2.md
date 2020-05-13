@@ -56,6 +56,8 @@ tags:
 
 Для демонстрации метода componentWillUnmount, в родительском классе App.js можно отключить компонент по клику на кнопку toggle
 
+**App.js**
+
 ```javascript
   function App() {
   const [show, setShow] = useState(true);
@@ -76,8 +78,9 @@ tags:
   );
 }
 ```
+<br/>
 
-**LifecicleClass.js**
+**LifecicleClass.js** <br />
 
 ```javascript
 export class LifecicleClass extends Component {
@@ -115,8 +118,9 @@ export class LifecicleClass extends Component {
   }
 }
 ```
+<br/>
 
-Тоже самое, но в функциональном компоненте с использованием хуков *useState* и *useEffect*
+Тоже самое, но в функциональном компоненте с использованием хуков *useState* и *useEffect* <br/>
 
 **LifecicleFunc.js**
 ```javascript
@@ -143,6 +147,8 @@ function LifecicleFunc() {
   )
 }
 ```
+<br/>
+
 Хук **useEffect** заменяет собой **componentDidMount**, **componentDidUpdate** и **componentWilUnmount**.<br> 
 **useEffect** принимает 2 параметра - функцию и массив зависимостей. В данном случае массив пустой, таким образом **useEffect** запускается 1 раз и картинка не будет загружаться снова при клике на кнопку или любом другом обновлении компонента. Если не передавать второй параметр, то useEfecct будет запускаться постоянно. Для выполнения аналога **componentWillUnmount** в **useEffect** нужно вернуть функцию.
 
