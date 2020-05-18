@@ -32,10 +32,8 @@ export default function singlePost({data, pageContext}) {
                         <Card.Subtitle className="mb-2 text-muted" >
                             {post.date}
                         </Card.Subtitle>
-                        <Card.Text>
-                        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />
-                        </Card.Text>
-                        
+                    
+                        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />      
                         <div>
                 {post.tags.map(tag =>(
                   <Link key={tag} to={`/tag/${slugify(tag)}`} className='mr-1' >
