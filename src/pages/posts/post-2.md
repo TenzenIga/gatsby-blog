@@ -2,7 +2,7 @@
 title: Жизненный цикл компонента React
 date: 2020-05-05
 path: /post-2
-image: ../../images/life.jpg
+image: ../../images/kaef.jpg
 tags: 
 - React
 ---

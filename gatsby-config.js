@@ -1,10 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Блог`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `Javascript everyday`,
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -21,8 +23,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-catch-links`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
