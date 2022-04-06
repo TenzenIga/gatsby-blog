@@ -57,4 +57,9 @@ footer{
         text-decoration: none;
         color: #fff;
       }
-  
+  .about-wrapper{
+    
+    max-width: 670px;
+    margin: 0 auto;
+    padding: 7rem 2rem;
+  }
