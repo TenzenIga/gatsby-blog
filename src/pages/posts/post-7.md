@@ -4,7 +4,7 @@ date: 2022-03-28
 path: /post-7
 image: ../../images/post7/mobx.png
 tags: 
-- react
+- React
 - NBD
 ---
 
@@ -33,10 +33,10 @@ tags:
 Начинаем с установки зависимостей для mobx и react router.
 
 ```
-npm i mobx mobx-react-lite react-router-dom 
+npm i mobx mobx-react-lite react-router-dom json-server
 ```
 
-Нам понадобится сама библиотека mobx и т.к мы будем использовать только функциональные компоненты нам достаточно mobx-react-lite.
+Нам понадобится сама библиотека mobx и т.к мы будем использовать только функциональные компоненты, нам достаточно mobx-react-lite.
 Для имитации бд, я использую json-server **db.json**
 
 **json.db**
@@ -216,7 +216,7 @@ export default MainPageObserver;
 ![main page](../../images/post7/main.png)
 
 
-Точно так же с авторизацией. Чтобы ограничить доступ к главной странице создадим компонент ProtectedRoute. Через него, в зависимости от статуса isAuth, либо перенаправляемся на страницу логина, либо в получаем компонент который пробросили через **props.children**.
+Точно так же с авторизацией. Чтобы ограничить доступ к главной странице создадим компонент ProtectedRoute. Через него, в зависимости от статуса isAuth, либо перенаправляемся на страницу логина, либо получаем компонент который пробросили через **props.children**.
 
 **ProtectedRoute.tsx**
 
