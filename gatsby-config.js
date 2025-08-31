@@ -3,11 +3,11 @@ module.exports = {
     title: `Блог`,
     description: `Javascript everyday`,
     author: `@gatsbyjs`,
+    siteUrl:`https://www.jsblog.ru`
   },
   plugins: [
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
