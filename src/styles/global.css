@@ -63,3 +63,6 @@ footer{
     margin: 0 auto;
     padding: 7rem 2rem;
   }
+  .link-color {
+    color:unset;
+  }

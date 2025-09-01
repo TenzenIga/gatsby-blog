@@ -25,10 +25,10 @@ const tagsPage = ({pageContext}) => {
             <div>
                 {tags.map(tag=>(
                     <div className='d-flex align-items-baseline' key={tag} >
-                    <Button href={`/tag/${slugify(tag)}`}  className='text-decoration-none flex-shrink-0' variant="link"  >{tag} <Badge variant='primary'  >
+                    <Button href={`/tag/${slugify(tag)}`}  className='px-1 text-decoration-none flex-shrink-0' variant="link"  >{tag}      <Badge bg='primary' text='light' >
                         {tagPostsCounts[tag]}  
-                        </Badge>   </Button>
-                        
+                        </Badge>     </Button>
+                     
                          <p>- {tagInfo[tag]} </p>
                     </div>
             

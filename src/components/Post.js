@@ -17,8 +17,8 @@ export default function Post({title, date, slug, image, content, tags}) {
     <Card.Text>{content}</Card.Text>
     <div className='d-flex align-items-center'>
     {tags.map( tag =>
-        <Link key={tag} to={`/tag/${slugify(tag)}`} className='mr-1' >
-             <Badge variant="primary" > {tag}</Badge>
+        <Link key={tag} to={`/tag/${slugify(tag)}`} className='mr-1 link-color'  >
+             <Badge bg='primary' text='white' > {tag}</Badge>
         </Link>
         )}
     <Button href={`/${slug}`} className='ml-auto text-decoration-none' variant="link"  >Читать »</Button>
