@@ -7,6 +7,7 @@ import {slugify} from '../util/util';
 import {Row, Col, Card, Badge}  from 'react-bootstrap';
 import Sidebar from '../components/Sidebar';
 import { DiscussionEmbed } from 'disqus-react';
+import SEO from '../components/seo';
 
 
 export default function singlePost({data, pageContext}) {
